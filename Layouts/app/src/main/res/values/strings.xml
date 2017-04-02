@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Layouts</string>
+    <string name="name">Nome</string>
+    <string name="last_name">Sobrenome</string>
+    <string name="phonetic_name">Nome fonético</string>
+    <string name="phone">Telefone</string>
+    <string name="email">E-mail</string>
+    <string name="cellphone">Celular</string>
+    <string name="save_in">Salvar em</string>
+    <string name="email_example">example@example.com</string>
+</resources>
