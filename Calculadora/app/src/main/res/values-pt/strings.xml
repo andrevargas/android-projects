@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Calculadora</string>
+    <string name="calculate">Calcular</string>
+    <string name="addition">Adição</string>
+    <string name="subtraction">Subtração</string>
+    <string name="multiplication">Multiplicação</string>
+    <string name="division">Divisão</string>
+    <string name="first_operand">Primeiro operando</string>
+    <string name="second_operand">Segundo operando</string>
+    <string name="division_by_zero_warning">Divisão por zero não é permitida.</string>
+    <string name="operation_null_warning">Selecione uma operação.</string>
+    <string name="first_operand_null_warning">O primeiro operando não pode ser nulo.</string>
+    <string name="second_operand_null_warning">O segundo operando não pode ser nulo.</string>
+    <string name="result_info">O resultado é: %1$.2f</string>
+</resources>

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Calculator</string>
+    <string name="calculate">Calculate</string>
+    <string name="addition">Addition</string>
+    <string name="subtraction">Subtraction</string>
+    <string name="multiplication">Multiplication</string>
+    <string name="division">Division</string>
+    <string name="first_operand">First operand</string>
+    <string name="second_operand">Second operand</string>
+    <string name="division_by_zero_warning">Division by zero is not allowed.</string>
+    <string name="operation_null_warning">Select an operation.</string>
+    <string name="first_operand_null_warning">First operand can\'t be null.</string>
+    <string name="second_operand_null_warning">Second operand can\'t be null.</string>
+    <string name="result_info">The result is: %1$.2f</string>
+</resources>
