@@ -4,7 +4,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
-        applicationId "sisnet.univali.br.calculadora"
+        applicationId "br.univali.sisnet.calculadora"
         minSdkVersion 22
         targetSdkVersion 25
         versionCode 1

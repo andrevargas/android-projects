@@ -12,4 +12,5 @@
     <string name="first_operand_null_warning">First operand can\'t be null.</string>
     <string name="second_operand_null_warning">Second operand can\'t be null.</string>
     <string name="result_info">The result is: %1$.2f</string>
+    <string name="operation">Operation</string>
 </resources>

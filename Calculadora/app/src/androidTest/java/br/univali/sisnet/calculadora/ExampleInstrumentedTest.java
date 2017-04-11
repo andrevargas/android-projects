@@ -1,4 +1,4 @@
-package sisnet.univali.br.calculadora;
+package br.univali.sisnet.calculadora;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("sisnet.univali.br.calculadora", appContext.getPackageName());
+        assertEquals("br.univali.sisnet.calculadora", appContext.getPackageName());
     }
 }
