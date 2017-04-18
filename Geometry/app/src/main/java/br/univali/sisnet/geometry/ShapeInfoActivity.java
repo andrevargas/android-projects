@@ -43,7 +43,7 @@ public class ShapeInfoActivity extends AppCompatActivity {
         TextView tvHeight = (TextView) findViewById(R.id.tvHeight);
 
         switch (shape) {
-            case "square":
+            case Constants.SQUARE:
                 tvShapeInfo.setText(getResources().getString(R.string.shape_info, "quadrado"));
                 tvRadius.setVisibility(View.INVISIBLE);
                 etRadius.setVisibility(View.INVISIBLE);
@@ -52,7 +52,7 @@ public class ShapeInfoActivity extends AppCompatActivity {
                 tvHeight.setVisibility(View.VISIBLE);
                 etHeight.setVisibility(View.VISIBLE);
                 break;
-            case "triangle":
+            case Constants.TRIANGLE:
                 tvShapeInfo.setText(getResources().getString(R.string.shape_info, "triângulo"));
                 tvRadius.setVisibility(View.INVISIBLE);
                 etRadius.setVisibility(View.INVISIBLE);
@@ -61,7 +61,7 @@ public class ShapeInfoActivity extends AppCompatActivity {
                 tvHeight.setVisibility(View.VISIBLE);
                 etHeight.setVisibility(View.VISIBLE);
                 break;
-            case "circle":
+            case Constants.CIRCLE:
                 tvShapeInfo.setText(getResources().getString(R.string.shape_info, "círculo"));
                 tvRadius.setVisibility(View.VISIBLE);
                 etRadius.setVisibility(View.VISIBLE);
