@@ -1,4 +1,4 @@
-package sisnet.univali.br.calculadora;
+package br.univali.sisnet.calculadora;
 
 import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
@@ -11,11 +11,6 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String ADDITION = "ADDITION";
-    private static final String SUBTRACTION = "SUBTRACTION";
-    private static final String MULTIPLICATION = "MULTIPLICATION";
-    private static final String DIVISION = "DIVISION";
-
     private EditText etFirstOperand;
     private EditText etSecondOperand;
     private RadioGroup rgOperations;
@@ -23,7 +18,6 @@ public class MainActivity extends AppCompatActivity {
 
     private Double firstOperand;
     private Double secondOperand;
-    private String operation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,22 +37,22 @@ public class MainActivity extends AppCompatActivity {
 
         tvResult.setText("");
 
-        if (!validateOperands()) return;
-        if (!validateOperation()) return;
+        if (!validateOperands() || !validateOperation()) return;
 
         Double result;
+        int checkedRadioId = rgOperations.getCheckedRadioButtonId();
 
-        switch (operation) {
-            case ADDITION:
+        switch (checkedRadioId) {
+            case R.id.rbAddition:
                 result = firstOperand + secondOperand;
                 break;
-            case SUBTRACTION:
+            case R.id.rbSubtraction:
                 result = firstOperand - secondOperand;
                 break;
-            case MULTIPLICATION:
+            case R.id.rbMultiplication:
                 result = firstOperand * secondOperand;
                 break;
-            case DIVISION:
+            case R.id.rbDivision:
                 result = firstOperand / secondOperand;
                 break;
             default:
@@ -95,31 +89,14 @@ public class MainActivity extends AppCompatActivity {
 
         int checkedRadioId = rgOperations.getCheckedRadioButtonId();
 
-        switch (checkedRadioId) {
-            case R.id.rbAddition:
-                operation = ADDITION;
-                break;
-            case R.id.rbSubtraction:
-                operation = SUBTRACTION;
-                break;
-            case R.id.rbMultiplication:
-                operation = MULTIPLICATION;
-                break;
-            case R.id.rbDivision:
-                operation = DIVISION;
-                break;
-            default:
-                operation = null;
-        }
-
         Resources res = getResources();
 
-        if (operation == null) {
+        if (checkedRadioId == -1) {
             Toast.makeText(this, res.getString(R.string.operation_null_warning), Toast.LENGTH_SHORT).show();
             return false;
         }
 
-        if (secondOperand == 0.0 && DIVISION.equals(operation)) {
+        if (secondOperand == 0.0 && checkedRadioId == R.id.rbDivision) {
             Toast.makeText(this, res.getString(R.string.division_by_zero_warning), Toast.LENGTH_SHORT).show();
             return false;
         }

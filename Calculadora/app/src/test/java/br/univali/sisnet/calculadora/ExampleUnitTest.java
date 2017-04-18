@@ -1,4 +1,4 @@
-package sisnet.univali.br.calculadora;
+package br.univali.sisnet.calculadora;
 
 import org.junit.Test;
 
