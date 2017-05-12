@@ -6,9 +6,11 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Toolbar toolbar;
     private TabLayout tabs;
     private ViewPager viewPager;
 
@@ -23,9 +25,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         tabs = (TabLayout) findViewById(R.id.tabs);
         viewPager = (ViewPager) findViewById(R.id.viewPager);
 
+        toolbar.setTitleTextColor(Color.WHITE);
+
+        setSupportActionBar(toolbar);
         setupViewPager(viewPager);
 
         tabs.setupWithViewPager(viewPager);
