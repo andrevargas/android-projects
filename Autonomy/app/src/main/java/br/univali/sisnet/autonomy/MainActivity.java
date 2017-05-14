@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         toolbar.setTitleTextColor(Color.WHITE);
 
-        setSupportActionBar(toolbar);
+        // setSupportActionBar(toolbar);
         setupViewPager(viewPager);
 
         tabs.setupWithViewPager(viewPager);

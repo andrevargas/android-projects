@@ -5,4 +5,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="refuellings">Abastecimentos</string>
     <string name="autonomy">Autonomia</string>
+    <string name="current_milleage">Quilometragem atual</string>
+    <string name="liters_refuelled">Litros abastecidos</string>
+    <string name="refuelling_date">Data de abastecimento</string>
 </resources>
