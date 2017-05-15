@@ -1,19 +1,20 @@
 <resources>
-    <string name="app_name">Autonomy</string>
+    <string name="app_name">Autonomia</string>
     <string name="refuellings">Abastecimentos</string>
     <string name="autonomy">Autonomia</string>
     <string name="add_refuelling">Adicionar abastecimento</string>
-    <string name="current_milleage">Quilometragem atual</string>
+    <string name="current_mileage">Quilometragem atual</string>
     <string name="liters_refuelled">Litros abastecidos</string>
     <string name="refuelling_date">Data de abastecimento</string>
     <string name="add">Adicionar</string>
     <string name="select_gas_station">Selecione o posto de gasolina</string>
-    <string name="display_current_milleage">Km: %.2f</string>
+    <string name="display_current_mileage">Km: %.2f</string>
     <string name="display_liters_refuelled">Litros: %.2f</string>
     <string name="error_mileage_less_than_last">O valor da quilometragem atual não pode ser menor do que o valor da última quilometragem</string>
     <string name="error_value_null">O valor não pode ser nulo</string>
     <string name="current_autonomy">Autonomia atual</string>
     <string name="unit">km/L</string>
+    <string name="zero_data">Não há nenhum abastecimento cadastrado.</string>
     <string-array name="gas_station_entries">
         <item>@string/select_gas_station</item>
         <item>Texaco</item>

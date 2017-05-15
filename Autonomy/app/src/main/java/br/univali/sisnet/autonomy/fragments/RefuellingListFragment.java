@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import br.univali.sisnet.autonomy.R;
 import br.univali.sisnet.autonomy.activities.AddRefuellingActivity;
@@ -29,7 +30,16 @@ public class RefuellingListFragment extends Fragment implements View.OnClickList
 
         View view = inflater.inflate(R.layout.fragment_refuelling_list, container, false);
         view.findViewById(R.id.btAddRefuelling).setOnClickListener(this);
-        RecyclerView rvRefuellings = (RecyclerView) view.findViewById(R.id.rvRefuellings);
+
+        setupRecyclerView(view);
+
+        return view;
+
+    }
+
+    public void setupRecyclerView(View itemView) {
+
+        RecyclerView rvRefuellings = (RecyclerView) itemView.findViewById(R.id.rvRefuellings);
 
         Context context = getActivity().getApplicationContext();
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
@@ -40,7 +50,15 @@ public class RefuellingListFragment extends Fragment implements View.OnClickList
         rvRefuellings.setLayoutManager(layoutManager);
         rvRefuellings.setAdapter(adapter);
 
-        return view;
+        TextView tvZeroData = (TextView) itemView.findViewById(R.id.tvZeroData);
+
+        if (adapter.getItemCount() == 0) {
+            rvRefuellings.setVisibility(View.GONE);
+            tvZeroData.setVisibility(View.VISIBLE);
+        } else {
+            rvRefuellings.setVisibility(View.VISIBLE);
+            tvZeroData.setVisibility(View.GONE);
+        }
 
     }
 

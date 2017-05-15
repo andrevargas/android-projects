@@ -9,8 +9,6 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -26,7 +24,7 @@ import br.univali.sisnet.autonomy.domain.Refuelling.RefuellingDao;
 
 public class AddRefuellingActivity extends AppCompatActivity {
 
-    private EditText etCurrentMilleage;
+    private EditText etCurrentMileage;
     private EditText etLitersRefuelled;
     private EditText etRefuellingDate;
     private Spinner spGasStation;
@@ -42,12 +40,17 @@ public class AddRefuellingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_refuelling);
 
-        etCurrentMilleage = (EditText) findViewById(R.id.etCurrentMilleage);
+        etCurrentMileage = (EditText) findViewById(R.id.etCurrentMileage);
         etLitersRefuelled = (EditText) findViewById(R.id.etLitersRefuelled);
         etRefuellingDate = (EditText) findViewById(R.id.etRefuellingDate);
         spGasStation = (Spinner) findViewById(R.id.spGasStation);
 
+        setupToolbar();
         updateDateValue();
+
+    }
+
+    private void setupToolbar() {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
@@ -55,8 +58,17 @@ public class AddRefuellingActivity extends AppCompatActivity {
         toolbar.setTitle(getString(R.string.add_refuelling));
 
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.getNavigationIcon().setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+        if (toolbar.getNavigationIcon() != null) {
+            toolbar.getNavigationIcon().setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN);
+            toolbar.setNavigationOnClickListener(v -> {
+                onBackPressed();
+            });
+        }
 
     }
 
@@ -102,12 +114,12 @@ public class AddRefuellingActivity extends AppCompatActivity {
 
         TextInputLayout tilCurrentMileage = (TextInputLayout) findViewById(R.id.tilCurrentMileage);
 
-        if (etCurrentMilleage.getText().length() == 0) {
+        if (etCurrentMileage.getText().length() == 0) {
             tilCurrentMileage.setError(getString(R.string.error_value_null));
             return false;
         }
 
-        Double currentMileage = Double.parseDouble(etCurrentMilleage.getText().toString());
+        Double currentMileage = Double.parseDouble(etCurrentMileage.getText().toString());
         List<Refuelling> refuellings = dao.getAll();
 
         if (refuellings.size() >= 1) {

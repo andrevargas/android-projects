@@ -41,10 +41,10 @@
             android:padding="8dp">
 
             <EditText
-                android:id="@+id/etCurrentMilleage"
+                android:id="@+id/etCurrentMileage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/current_milleage"
+                android:hint="@string/current_mileage"
                 android:inputType="numberDecimal" />
         </android.support.design.widget.TextInputLayout>
 

@@ -20,7 +20,7 @@ public class RefuellingViewHolder extends RecyclerView.ViewHolder {
 
     private final ImageView ivLogo;
     private final TextView tvRefuellingDate;
-    private final TextView tvCurrentMilleage;
+    private final TextView tvCurrentMileage;
     private final TextView tvLitersRefuelled;
 
     public RefuellingViewHolder(View itemView) {
@@ -31,7 +31,7 @@ public class RefuellingViewHolder extends RecyclerView.ViewHolder {
 
         ivLogo = (ImageView) itemView.findViewById(R.id.ivLogo);
         tvRefuellingDate = (TextView) itemView.findViewById(R.id.tvRefuellingDate);
-        tvCurrentMilleage = (TextView) itemView.findViewById(R.id.tvCurrentMilleage);
+        tvCurrentMileage = (TextView) itemView.findViewById(R.id.tvCurrentMileage);
         tvLitersRefuelled = (TextView) itemView.findViewById(R.id.tvLitersRefuelled);
 
     }
@@ -44,9 +44,9 @@ public class RefuellingViewHolder extends RecyclerView.ViewHolder {
         ivLogo.setImageResource(item.getGasStation().getLogoSrc());
         tvRefuellingDate.setText(dateFormat.format(item.getRefuellingDate().getTime()));
 
-        tvCurrentMilleage.setText(
+        tvCurrentMileage.setText(
             res.getString(
-                R.string.display_current_milleage,
+                R.string.display_current_mileage,
                 item.getCurrentMileage()
             )
         );

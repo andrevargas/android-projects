@@ -24,24 +24,6 @@ public class AutonomyApplication extends Application {
         dao.save(new GasStation(4, "Ipiranga", R.drawable.logo_ipiranga));
         dao.save(new GasStation(5, "Outros", R.drawable.logo_others));
 
-        Refuelling refuelling = new Refuelling();
-        refuelling.setCurrentMileage(0);
-        refuelling.setLitersRefuelled(0);
-        refuelling.setRefuellingDate(Calendar.getInstance());
-        refuelling.setId(1);
-        refuelling.setGasStation(dao.get(3));
-
-        RefuellingDao.getInstance().save(refuelling);
-
-        refuelling = new Refuelling();
-        refuelling.setCurrentMileage(650);
-        refuelling.setLitersRefuelled(45);
-        refuelling.setRefuellingDate(Calendar.getInstance());
-        refuelling.setId(1);
-        refuelling.setGasStation(dao.get(2));
-
-        RefuellingDao.getInstance().save(refuelling);
-
     }
 
 }
