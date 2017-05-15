@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -65,9 +66,7 @@ public class AddRefuellingActivity extends AppCompatActivity {
 
         if (toolbar.getNavigationIcon() != null) {
             toolbar.getNavigationIcon().setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN);
-            toolbar.setNavigationOnClickListener(v -> {
-                onBackPressed();
-            });
+            toolbar.setNavigationOnClickListener(v -> onBackPressed());
         }
 
     }
@@ -122,10 +121,18 @@ public class AddRefuellingActivity extends AppCompatActivity {
         Double currentMileage = Double.parseDouble(etCurrentMileage.getText().toString());
         List<Refuelling> refuellings = dao.getAll();
 
+        if (currentMileage < 0) {
+            tilCurrentMileage.setError(getString(R.string.error_value_negative));
+            return false;
+        }
+
         if (refuellings.size() >= 1) {
             Refuelling lastRefuelling = refuellings.get(refuellings.size() - 1);
             if (currentMileage < lastRefuelling.getCurrentMileage()) {
-                tilCurrentMileage.setError(getString(R.string.error_mileage_less_than_last));
+                tilCurrentMileage.setError(getString(
+                    R.string.error_mileage_less_than_last,
+                    lastRefuelling.getCurrentMileage()
+                ));
                 return false;
             }
         }
@@ -145,6 +152,12 @@ public class AddRefuellingActivity extends AppCompatActivity {
         }
 
         Double litersRefuelled = Double.parseDouble(etLitersRefuelled.getText().toString());
+
+        if (litersRefuelled < 0) {
+            tilLitersRefuelled.setError(getString(R.string.error_value_negative));
+            return false;
+        }
+
         newInstance.setLitersRefuelled(litersRefuelled);
         return true;
     }
@@ -164,6 +177,8 @@ public class AddRefuellingActivity extends AppCompatActivity {
             newInstance.setGasStation(GasStationDao.getInstance().get(gasStationId));
             return true;
         }
+
+        Toast.makeText(this, getString(R.string.error_gas_station_null), Toast.LENGTH_SHORT).show();
 
         return false;
 

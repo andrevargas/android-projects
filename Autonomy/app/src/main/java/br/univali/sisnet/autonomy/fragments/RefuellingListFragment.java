@@ -20,6 +20,9 @@ import br.univali.sisnet.autonomy.views.adapters.RefuellingAdapter;
 
 public class RefuellingListFragment extends Fragment implements View.OnClickListener {
 
+    private RecyclerView rvRefuellings;
+    private TextView tvZeroData;
+
     private RefuellingAdapter adapter = null;
 
     public RefuellingListFragment() {}
@@ -31,15 +34,17 @@ public class RefuellingListFragment extends Fragment implements View.OnClickList
         View view = inflater.inflate(R.layout.fragment_refuelling_list, container, false);
         view.findViewById(R.id.btAddRefuelling).setOnClickListener(this);
 
-        setupRecyclerView(view);
+        tvZeroData = (TextView) view.findViewById(R.id.tvZeroData);
+        rvRefuellings = (RecyclerView) view.findViewById(R.id.rvRefuellings);
+
+        setupRecyclerView();
+        updateUi();
 
         return view;
 
     }
 
-    public void setupRecyclerView(View itemView) {
-
-        RecyclerView rvRefuellings = (RecyclerView) itemView.findViewById(R.id.rvRefuellings);
+    public void setupRecyclerView() {
 
         Context context = getActivity().getApplicationContext();
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
@@ -50,16 +55,6 @@ public class RefuellingListFragment extends Fragment implements View.OnClickList
         rvRefuellings.setLayoutManager(layoutManager);
         rvRefuellings.setAdapter(adapter);
 
-        TextView tvZeroData = (TextView) itemView.findViewById(R.id.tvZeroData);
-
-        if (adapter.getItemCount() == 0) {
-            rvRefuellings.setVisibility(View.GONE);
-            tvZeroData.setVisibility(View.VISIBLE);
-        } else {
-            rvRefuellings.setVisibility(View.VISIBLE);
-            tvZeroData.setVisibility(View.GONE);
-        }
-
     }
 
     @Override
@@ -68,12 +63,23 @@ public class RefuellingListFragment extends Fragment implements View.OnClickList
         getActivity().startActivity(intent);
     }
 
+    private void updateUi() {
+        if (adapter != null) {
+            adapter.notifyDataSetChanged();
+            if (adapter.getItemCount() == 0) {
+                rvRefuellings.setVisibility(View.GONE);
+                tvZeroData.setVisibility(View.VISIBLE);
+            } else {
+                rvRefuellings.setVisibility(View.VISIBLE);
+                tvZeroData.setVisibility(View.GONE);
+            }
+        }
+    }
+
     @Override
     public void onResume() {
         super.onResume();
-        if (adapter != null) {
-            adapter.notifyDataSetChanged();
-        }
+        updateUi();
     }
 
 }
