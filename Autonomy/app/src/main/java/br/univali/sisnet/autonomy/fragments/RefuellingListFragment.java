@@ -1,9 +1,11 @@
 package br.univali.sisnet.autonomy.fragments;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -34,8 +36,11 @@ public class RefuellingListFragment extends Fragment implements View.OnClickList
         view.findViewById(R.id.btAddRefuelling).setOnClickListener(this);
         RecyclerView rvRefuellings = (RecyclerView) view.findViewById(R.id.rvRefuellings);
 
-        RefuellingDao dao = RefuellingDao.getInstance();
 
+        Context context = getActivity().getApplicationContext();
+        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
+
+        RefuellingDao dao = RefuellingDao.getInstance();
         Refuelling refuelling = new Refuelling();
 
         refuelling.setId(1);
@@ -45,14 +50,13 @@ public class RefuellingListFragment extends Fragment implements View.OnClickList
         refuelling.setGasStation(GasStationDao.getInstance().get(1));
 
         dao.save(refuelling);
+        dao.save(refuelling);
+        dao.save(refuelling);
 
         adapter = new RefuellingAdapter();
         adapter.setList(dao.getAll());
 
-        rvRefuellings.setLayoutManager(
-            new LinearLayoutManager(getActivity().getApplicationContext())
-        );
-
+        rvRefuellings.setLayoutManager(layoutManager);
         rvRefuellings.setAdapter(adapter);
 
         return view;
