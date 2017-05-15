@@ -1,4 +1,4 @@
-package br.univali.sisnet.autonomy;
+package br.univali.sisnet.autonomy.views.holders;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;

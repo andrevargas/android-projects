@@ -7,6 +7,7 @@ import br.univali.sisnet.autonomy.domain.GasStation.GasStation;
 
 public class Refuelling {
 
+    private long id;
     private double currentMileage;
     private double litersRefuelled;
     private Calendar refuellingDate;
@@ -42,6 +43,14 @@ public class Refuelling {
 
     public void setGasStation(GasStation gasStation) {
         this.gasStation = gasStation;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
 }

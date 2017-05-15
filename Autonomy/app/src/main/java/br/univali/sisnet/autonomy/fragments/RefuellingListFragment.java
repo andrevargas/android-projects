@@ -1,4 +1,4 @@
-package br.univali.sisnet.autonomy;
+package br.univali.sisnet.autonomy.fragments;
 
 
 import android.content.Intent;
@@ -7,6 +7,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import br.univali.sisnet.autonomy.R;
+import br.univali.sisnet.autonomy.activities.AddRefuellingActivity;
 
 
 public class RefuellingListFragment extends Fragment implements View.OnClickListener {

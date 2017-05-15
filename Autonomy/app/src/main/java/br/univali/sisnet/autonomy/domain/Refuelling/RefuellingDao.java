@@ -21,8 +21,12 @@ public class RefuellingDao {
         refuellingList.add(refuelling);
     }
 
-    public Refuelling get(int index) {
-        return refuellingList.get(index);
+    public Refuelling get(long id) {
+        return refuellingList
+            .stream()
+            .filter(item -> item.getId() == id)
+            .findFirst()
+            .orElse(null);
     }
 
     public List<Refuelling> getAll() {

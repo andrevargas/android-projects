@@ -1,4 +1,4 @@
-package br.univali.sisnet.autonomy;
+package br.univali.sisnet.autonomy.views.adapters;
 
 
 import android.support.v4.app.Fragment;

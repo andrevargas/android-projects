@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">Autonomy</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="refuellings">Abastecimentos</string>
     <string name="autonomy">Autonomia</string>
+    <string name="add_refuelling">Adicionar abastecimento</string>
     <string name="current_milleage">Quilometragem atual</string>
     <string name="liters_refuelled">Litros abastecidos</string>
     <string name="refuelling_date">Data de abastecimento</string>
+    <string name="add">Adicionar</string>
+    <string name="select_gas_station">Selecione o posto de gasolina</string>
 </resources>

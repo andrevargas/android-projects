@@ -1,4 +1,4 @@
-package br.univali.sisnet.autonomy;
+package br.univali.sisnet.autonomy.views.adapters;
 
 
 import android.support.v7.widget.RecyclerView;
@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
+import br.univali.sisnet.autonomy.R;
+import br.univali.sisnet.autonomy.views.holders.RefuellingViewHolder;
 import br.univali.sisnet.autonomy.domain.Refuelling.Refuelling;
 
 public class RefuellingAdapter extends RecyclerView.Adapter<RefuellingViewHolder> {
