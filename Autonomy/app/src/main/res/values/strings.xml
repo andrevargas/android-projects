@@ -8,4 +8,6 @@
     <string name="refuelling_date">Data de abastecimento</string>
     <string name="add">Adicionar</string>
     <string name="select_gas_station">Selecione o posto de gasolina</string>
+    <string name="display_current_milleage">Km: %1$.2f</string>
+    <string name="display_liters_refuelled">Litros: %1$.2f</string>
 </resources>

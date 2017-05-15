@@ -30,11 +30,12 @@ public class RefuellingAdapter extends RecyclerView.Adapter<RefuellingViewHolder
 
     @Override
     public void onBindViewHolder(RefuellingViewHolder holder, int position) {
-
+        holder.renderItem(refuellingList.get(position));
     }
 
     @Override
     public int getItemCount() {
         return refuellingList.size();
     }
+
 }

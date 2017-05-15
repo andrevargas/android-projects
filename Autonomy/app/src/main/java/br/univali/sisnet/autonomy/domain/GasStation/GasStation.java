@@ -3,46 +3,26 @@ package br.univali.sisnet.autonomy.domain.GasStation;
 
 public class GasStation {
 
-    private long id;
-    private String name;
-    private String logo;
+    private final long id;
+    private final String name;
+    private final int logoSrc;
 
-    public GasStation(String name) {
-        this.name = name;
-    }
-
-    public GasStation(long id, String name) {
+    public GasStation(long id, String name, int logoSrc) {
         this.id = id;
         this.name = name;
-    }
-
-    public GasStation(String name, String logo) {
-        this.name = name;
-        this.logo = logo;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getLogo() {
-        return logo;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setLogo(String logo) {
-        this.logo = logo;
+        this.logoSrc = logoSrc;
     }
 
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public String getName() {
+        return name;
+    }
+
+    public int getLogoSrc() {
+        return logoSrc;
     }
 
 }

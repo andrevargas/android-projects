@@ -78,14 +78,11 @@ public class AddRefuellingActivity extends AppCompatActivity {
 
     public void openDatePicker(View target) {
 
-        DatePickerDialog.OnDateSetListener listener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                selectedDate.set(Calendar.YEAR, year);
-                selectedDate.set(Calendar.MONTH, month);
-                selectedDate.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                updateDateValue();
-            }
+        DatePickerDialog.OnDateSetListener listener = (view, year, month, dayOfMonth) -> {
+            selectedDate.set(Calendar.YEAR, year);
+            selectedDate.set(Calendar.MONTH, month);
+            selectedDate.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            updateDateValue();
         };
 
         new DatePickerDialog(
@@ -114,6 +111,8 @@ public class AddRefuellingActivity extends AppCompatActivity {
         refuelling.setGasStation(gasStation);
 
         RefuellingDao.getInstance().save(refuelling);
+
+        finish();
 
     }
 
