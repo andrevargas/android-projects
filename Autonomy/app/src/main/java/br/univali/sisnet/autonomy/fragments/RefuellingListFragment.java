@@ -5,19 +5,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.Calendar;
-
 import br.univali.sisnet.autonomy.R;
 import br.univali.sisnet.autonomy.activities.AddRefuellingActivity;
-import br.univali.sisnet.autonomy.domain.GasStation.GasStationDao;
-import br.univali.sisnet.autonomy.domain.Refuelling.Refuelling;
 import br.univali.sisnet.autonomy.domain.Refuelling.RefuellingDao;
 import br.univali.sisnet.autonomy.views.adapters.RefuellingAdapter;
 
@@ -36,25 +31,11 @@ public class RefuellingListFragment extends Fragment implements View.OnClickList
         view.findViewById(R.id.btAddRefuelling).setOnClickListener(this);
         RecyclerView rvRefuellings = (RecyclerView) view.findViewById(R.id.rvRefuellings);
 
-
         Context context = getActivity().getApplicationContext();
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
 
-        RefuellingDao dao = RefuellingDao.getInstance();
-        Refuelling refuelling = new Refuelling();
-
-        refuelling.setId(1);
-        refuelling.setCurrentMileage(300000);
-        refuelling.setLitersRefuelled(30);
-        refuelling.setRefuellingDate(Calendar.getInstance());
-        refuelling.setGasStation(GasStationDao.getInstance().get(1));
-
-        dao.save(refuelling);
-        dao.save(refuelling);
-        dao.save(refuelling);
-
         adapter = new RefuellingAdapter();
-        adapter.setList(dao.getAll());
+        adapter.setList(RefuellingDao.getInstance().getAll());
 
         rvRefuellings.setLayoutManager(layoutManager);
         rvRefuellings.setAdapter(adapter);

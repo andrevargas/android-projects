@@ -2,8 +2,12 @@ package br.univali.sisnet.autonomy;
 
 import android.app.Application;
 
+import java.util.Calendar;
+
 import br.univali.sisnet.autonomy.domain.GasStation.GasStation;
 import br.univali.sisnet.autonomy.domain.GasStation.GasStationDao;
+import br.univali.sisnet.autonomy.domain.Refuelling.Refuelling;
+import br.univali.sisnet.autonomy.domain.Refuelling.RefuellingDao;
 
 public class AutonomyApplication extends Application {
 
@@ -19,6 +23,24 @@ public class AutonomyApplication extends Application {
         dao.save(new GasStation(3, "Petrobras", R.drawable.logo_petrobras));
         dao.save(new GasStation(4, "Ipiranga", R.drawable.logo_ipiranga));
         dao.save(new GasStation(5, "Outros", R.drawable.logo_others));
+
+        Refuelling refuelling = new Refuelling();
+        refuelling.setCurrentMileage(0);
+        refuelling.setLitersRefuelled(0);
+        refuelling.setRefuellingDate(Calendar.getInstance());
+        refuelling.setId(1);
+        refuelling.setGasStation(dao.get(3));
+
+        RefuellingDao.getInstance().save(refuelling);
+
+        refuelling = new Refuelling();
+        refuelling.setCurrentMileage(650);
+        refuelling.setLitersRefuelled(45);
+        refuelling.setRefuellingDate(Calendar.getInstance());
+        refuelling.setId(1);
+        refuelling.setGasStation(dao.get(2));
+
+        RefuellingDao.getInstance().save(refuelling);
 
     }
 

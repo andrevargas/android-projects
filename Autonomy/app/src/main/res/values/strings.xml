@@ -12,6 +12,8 @@
     <string name="display_liters_refuelled">Litros: %.2f</string>
     <string name="error_mileage_less_than_last">O valor da quilometragem atual não pode ser menor do que o valor da última quilometragem</string>
     <string name="error_value_null">O valor não pode ser nulo</string>
+    <string name="current_autonomy">Autonomia atual</string>
+    <string name="unit">km/L</string>
     <string-array name="gas_station_entries">
         <item>@string/select_gas_station</item>
         <item>Texaco</item>
