@@ -2,10 +2,7 @@ package br.univali.sisnet.autonomy.domain.GasStation;
 
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 public class GasStationDao {
 
@@ -26,11 +23,10 @@ public class GasStationDao {
     }
 
     public GasStation get(long id) {
-        return gasStationList
-            .stream()
-            .filter(item -> item.getId() == id)
-            .findFirst()
-            .orElse(null);
+        for (GasStation item: gasStationList) {
+            if (item.getId() == id) return item;
+        }
+        return null;
     }
 
     public List<GasStation> getAll() {

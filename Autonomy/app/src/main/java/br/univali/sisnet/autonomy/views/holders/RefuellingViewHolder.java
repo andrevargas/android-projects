@@ -42,7 +42,7 @@ public class RefuellingViewHolder extends RecyclerView.ViewHolder {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
         ivLogo.setImageResource(item.getGasStation().getLogoSrc());
-        tvRefuellingDate.setText(dateFormat.format(item.getRefuellingDate()));
+        tvRefuellingDate.setText(dateFormat.format(item.getRefuellingDate().getTime()));
 
         tvCurrentMilleage.setText(
             res.getString(

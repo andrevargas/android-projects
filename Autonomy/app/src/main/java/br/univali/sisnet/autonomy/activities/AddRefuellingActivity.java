@@ -105,6 +105,7 @@ public class AddRefuellingActivity extends AppCompatActivity {
         Refuelling refuelling = new Refuelling();
         GasStation gasStation = GasStationDao.getInstance().get(1);
 
+        refuelling.setId(1);
         refuelling.setCurrentMileage(Integer.valueOf(etCurrentMilleage.getText().toString()));
         refuelling.setLitersRefuelled(Integer.valueOf(etLitersRefuelled.getText().toString()));
         refuelling.setRefuellingDate(selectedDate);

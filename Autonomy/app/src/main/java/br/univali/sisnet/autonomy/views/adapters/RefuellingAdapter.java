@@ -16,8 +16,8 @@ public class RefuellingAdapter extends RecyclerView.Adapter<RefuellingViewHolder
 
     private List<Refuelling> refuellingList;
 
-    public RefuellingAdapter(List<Refuelling> refuellingList) {
-        this.refuellingList = refuellingList;
+    public void setList(List<Refuelling> list) {
+        refuellingList = list;
     }
 
     @Override

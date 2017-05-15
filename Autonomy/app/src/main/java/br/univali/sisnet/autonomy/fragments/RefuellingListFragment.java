@@ -10,8 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.Calendar;
+
 import br.univali.sisnet.autonomy.R;
 import br.univali.sisnet.autonomy.activities.AddRefuellingActivity;
+import br.univali.sisnet.autonomy.domain.GasStation.GasStationDao;
+import br.univali.sisnet.autonomy.domain.Refuelling.Refuelling;
 import br.univali.sisnet.autonomy.domain.Refuelling.RefuellingDao;
 import br.univali.sisnet.autonomy.views.adapters.RefuellingAdapter;
 
@@ -30,7 +34,20 @@ public class RefuellingListFragment extends Fragment implements View.OnClickList
         view.findViewById(R.id.btAddRefuelling).setOnClickListener(this);
         RecyclerView rvRefuellings = (RecyclerView) view.findViewById(R.id.rvRefuellings);
 
-        adapter = new RefuellingAdapter(RefuellingDao.getInstance().getAll());
+        RefuellingDao dao = RefuellingDao.getInstance();
+
+        Refuelling refuelling = new Refuelling();
+
+        refuelling.setId(1);
+        refuelling.setCurrentMileage(300000);
+        refuelling.setLitersRefuelled(30);
+        refuelling.setRefuellingDate(Calendar.getInstance());
+        refuelling.setGasStation(GasStationDao.getInstance().get(1));
+
+        dao.save(refuelling);
+
+        adapter = new RefuellingAdapter();
+        adapter.setList(dao.getAll());
 
         rvRefuellings.setLayoutManager(
             new LinearLayoutManager(getActivity().getApplicationContext())
@@ -55,4 +72,5 @@ public class RefuellingListFragment extends Fragment implements View.OnClickList
             adapter.notifyDataSetChanged();
         }
     }
+
 }

@@ -22,11 +22,10 @@ public class RefuellingDao {
     }
 
     public Refuelling get(long id) {
-        return refuellingList
-            .stream()
-            .filter(item -> item.getId() == id)
-            .findFirst()
-            .orElse(null);
+        for (Refuelling item : refuellingList) {
+            if (item.getId() == id) return item;
+        }
+        return null;
     }
 
     public List<Refuelling> getAll() {
