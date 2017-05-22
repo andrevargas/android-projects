@@ -1,18 +1,26 @@
 package br.univali.sisnet.autonomy.domain.Refuelling;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import br.univali.sisnet.autonomy.infra.AutonomyDbHelper;
+
 public class RefuellingDao {
+
+    private AutonomyDbHelper dbHelper;
 
     private final List<Refuelling> refuellingList = new ArrayList<>();
     private static RefuellingDao instance;
 
-    private RefuellingDao() {}
+    private RefuellingDao(Context context) {
+        dbHelper = new AutonomyDbHelper(context);
+    }
 
-    public static RefuellingDao getInstance() {
+    public static RefuellingDao getInstance(Context context) {
         if (instance == null) {
-            instance = new RefuellingDao();
+            instance = new RefuellingDao(context);
         }
         return instance;
     }
