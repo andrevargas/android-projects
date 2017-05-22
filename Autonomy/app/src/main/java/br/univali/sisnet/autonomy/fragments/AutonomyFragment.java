@@ -39,7 +39,7 @@ public class AutonomyFragment extends Fragment {
 
     private void calculateAutonomy() {
 
-        List<Refuelling> refuellings = RefuellingDao.getInstance().getAll();
+        List<Refuelling> refuellings = new ArrayList<>(RefuellingDao.getInstance().getAll());
 
         if (refuellings.size() > 0) {
 
@@ -48,6 +48,8 @@ public class AutonomyFragment extends Fragment {
 
             Double totalMileage = lastRefuelling.getCurrentMileage() - firstRefuelling.getCurrentMileage();
             Double litersSum = 0.0;
+
+            refuellings.remove(refuellings.size() - 1);
 
             for (Refuelling item : refuellings) {
                 litersSum += item.getLitersRefuelled();
