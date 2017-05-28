@@ -41,7 +41,7 @@ public class RefuellingViewHolder extends RecyclerView.ViewHolder {
         Resources res = context.getResources();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
-        ivLogo.setImageResource(item.getGasStation().getLogoSrc());
+        ivLogo.setImageResource(getDrawableIdByName(item.getGasStation().getLogoSrc()));
         tvRefuellingDate.setText(dateFormat.format(item.getRefuellingDate().getTime()));
 
         tvCurrentMileage.setText(
@@ -58,6 +58,11 @@ public class RefuellingViewHolder extends RecyclerView.ViewHolder {
             )
         );
 
+    }
+
+    private int getDrawableIdByName(String drawableName) {
+        final Resources res = context.getResources();
+        return res.getIdentifier(drawableName, "drawable", context.getPackageName());
     }
 
 }

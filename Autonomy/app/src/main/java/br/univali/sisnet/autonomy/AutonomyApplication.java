@@ -1,6 +1,7 @@
 package br.univali.sisnet.autonomy;
 
 import android.app.Application;
+import android.content.res.Resources;
 
 import java.util.Calendar;
 
@@ -16,13 +17,14 @@ public class AutonomyApplication extends Application {
 
         super.onCreate();
 
-        GasStationDao dao = GasStationDao.getInstance();
+        Resources res = getResources();
+        GasStationDao dao = GasStationDao.getInstance(getApplicationContext());
 
-        dao.save(new GasStation(1, "Texaco", R.drawable.logo_texaco));
-        dao.save(new GasStation(2, "Shell", R.drawable.logo_shell));
-        dao.save(new GasStation(3, "Petrobras", R.drawable.logo_petrobras));
-        dao.save(new GasStation(4, "Ipiranga", R.drawable.logo_ipiranga));
-        dao.save(new GasStation(5, "Outros", R.drawable.logo_others));
+        dao.save(new GasStation(1, "Texaco", res.getResourceEntryName(R.drawable.logo_texaco)));
+        dao.save(new GasStation(2, "Shell", res.getResourceEntryName(R.drawable.logo_shell)));
+        dao.save(new GasStation(3, "Petrobras", res.getResourceEntryName(R.drawable.logo_petrobras)));
+        dao.save(new GasStation(4, "Ipiranga", res.getResourceEntryName(R.drawable.logo_ipiranga)));
+        dao.save(new GasStation(5, "Outros", res.getResourceEntryName(R.drawable.logo_others)));
 
     }
 
