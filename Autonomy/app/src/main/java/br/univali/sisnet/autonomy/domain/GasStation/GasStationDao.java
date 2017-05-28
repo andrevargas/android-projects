@@ -1,19 +1,25 @@
 package br.univali.sisnet.autonomy.domain.GasStation;
 
 
+import android.content.Context;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import br.univali.sisnet.autonomy.infra.AutonomyDbHelper;
+
 public class GasStationDao {
 
-    private final List<GasStation> gasStationList = new ArrayList<>();
+    private AutonomyDbHelper dbHelper;
     private static GasStationDao instance;
 
-    private GasStationDao() {}
+    private GasStationDao(Context context) {
+        dbHelper = AutonomyDbHelper.getInstance(context);
+    }
 
-    public static GasStationDao getInstance() {
+    public static GasStationDao getInstance(Context context) {
         if (instance == null) {
-            instance = new GasStationDao();
+            instance = new GasStationDao(context);
         }
         return  instance;
     }

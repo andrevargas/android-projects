@@ -35,7 +35,7 @@ public class AutonomyDbHelper extends SQLiteOpenHelper {
         return instance;
     }
 
-    public AutonomyDbHelper(Context context) {
+    private AutonomyDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
