@@ -1,6 +1,7 @@
 package br.univali.sisnet.autonomy.fragments;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -39,7 +40,8 @@ public class AutonomyFragment extends Fragment {
 
     private void calculateAutonomy() {
 
-        List<Refuelling> refuellings = new ArrayList<>(RefuellingDao.getInstance().getAll());
+        Context context = getActivity().getApplicationContext();
+        List<Refuelling> refuellings = new ArrayList<>(RefuellingDao.getInstance(context).getAll());
 
         if (refuellings.size() > 0) {
 

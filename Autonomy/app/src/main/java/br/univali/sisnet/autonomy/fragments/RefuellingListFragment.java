@@ -24,6 +24,7 @@ public class RefuellingListFragment extends Fragment implements View.OnClickList
     private TextView tvZeroData;
 
     private RefuellingAdapter adapter = null;
+    private RefuellingDao dao;
 
     public RefuellingListFragment() {}
 
@@ -33,6 +34,8 @@ public class RefuellingListFragment extends Fragment implements View.OnClickList
 
         View view = inflater.inflate(R.layout.fragment_refuelling_list, container, false);
         view.findViewById(R.id.btAddRefuelling).setOnClickListener(this);
+
+        dao = RefuellingDao.getInstance(getActivity().getApplicationContext());
 
         tvZeroData = (TextView) view.findViewById(R.id.tvZeroData);
         rvRefuellings = (RecyclerView) view.findViewById(R.id.rvRefuellings);
@@ -50,7 +53,7 @@ public class RefuellingListFragment extends Fragment implements View.OnClickList
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
 
         adapter = new RefuellingAdapter();
-        adapter.setList(RefuellingDao.getInstance().getAll());
+        adapter.setList(dao.getAll());
 
         rvRefuellings.setLayoutManager(layoutManager);
         rvRefuellings.setAdapter(adapter);
@@ -65,6 +68,7 @@ public class RefuellingListFragment extends Fragment implements View.OnClickList
 
     private void updateUi() {
         if (adapter != null) {
+            adapter.setList(dao.getAll());
             adapter.notifyDataSetChanged();
             if (adapter.getItemCount() == 0) {
                 rvRefuellings.setVisibility(View.GONE);

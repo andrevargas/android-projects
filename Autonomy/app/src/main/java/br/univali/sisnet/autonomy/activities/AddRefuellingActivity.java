@@ -31,7 +31,7 @@ public class AddRefuellingActivity extends AppCompatActivity {
     private Spinner spGasStation;
 
     private final Calendar selectedDate = Calendar.getInstance();
-    private final RefuellingDao dao = RefuellingDao.getInstance();
+    private RefuellingDao refuellingDao;
 
     private Refuelling newInstance = new Refuelling();
 
@@ -40,6 +40,8 @@ public class AddRefuellingActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_refuelling);
+
+        refuellingDao = RefuellingDao.getInstance(getApplicationContext());
 
         etCurrentMileage = (EditText) findViewById(R.id.etCurrentMileage);
         etLitersRefuelled = (EditText) findViewById(R.id.etLitersRefuelled);
@@ -97,7 +99,7 @@ public class AddRefuellingActivity extends AppCompatActivity {
 
     public void onClickAdd(View target) {
         if (!validateFields()) return;
-        dao.save(newInstance);
+        refuellingDao.save(newInstance);
         finish();
     }
 
@@ -119,7 +121,7 @@ public class AddRefuellingActivity extends AppCompatActivity {
         }
 
         Double currentMileage = Double.parseDouble(etCurrentMileage.getText().toString());
-        List<Refuelling> refuellings = dao.getAll();
+        List<Refuelling> refuellings = refuellingDao.getAll();
 
         if (currentMileage < 0) {
             tilCurrentMileage.setError(getString(R.string.error_value_negative));
@@ -174,7 +176,8 @@ public class AddRefuellingActivity extends AppCompatActivity {
         int gasStationId = Integer.valueOf(valuesArray[position]);
 
         if (gasStationId > 0) {
-            newInstance.setGasStation(GasStationDao.getInstance().get(gasStationId));
+            GasStationDao gasStationDao = GasStationDao.getInstance(getApplicationContext());
+            newInstance.setGasStation(gasStationDao.get(gasStationId));
             return true;
         }
 

@@ -22,9 +22,17 @@ public class AutonomyDbHelper extends SQLiteOpenHelper {
             "id INTEGER PRIMARY KEY AUTOINCREMENT," +
             "current_mileage NUMERIC NOT NULL," +
             "liters_refuelled NUMERIC NOT NULL," +
-            "refuelling_date TEXT NOT NULL," +
+            "refuelling_date NUMERIC NOT NULL," +
             "gas_station_id INTEGER NOT NULL" +
         ")";
+
+    private static final String SQL_INSERT_INITIAL_GAS_STATIONS =
+        "INSERT INTO gas_station (id, name, logo_src) " +
+        "VALUES (1, 'Texaco', 'logo_texaco'), " +
+        "(2, 'Shell', 'logo_shell'), " +
+        "(3, 'Petrobras', 'logo_petrobras'), " +
+        "(4, 'Ipiranga', 'logo_ipiranga'), " +
+        "(5, 'Outros', 'logo_others')";
 
     private static AutonomyDbHelper instance;
 
@@ -43,11 +51,10 @@ public class AutonomyDbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SQL_CREATE_GAS_STATION_TABLE);
         db.execSQL(SQL_CREATE_REFUELLING_TABLE);
+        db.execSQL(SQL_INSERT_INITIAL_GAS_STATIONS);
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
-    }
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {}
 
 }
