@@ -1,11 +1,12 @@
 package br.univali.sisnet.autonomy.domain.Refuelling;
 
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 import br.univali.sisnet.autonomy.domain.GasStation.GasStation;
 
-public class Refuelling {
+public class Refuelling implements Serializable {
 
     private long id;
     private double currentMileage;

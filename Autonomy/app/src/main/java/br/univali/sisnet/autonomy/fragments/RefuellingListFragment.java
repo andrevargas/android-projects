@@ -4,6 +4,7 @@ package br.univali.sisnet.autonomy.fragments;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,15 +15,17 @@ import android.widget.TextView;
 
 import br.univali.sisnet.autonomy.R;
 import br.univali.sisnet.autonomy.activities.AddRefuellingActivity;
+import br.univali.sisnet.autonomy.domain.Refuelling.Refuelling;
 import br.univali.sisnet.autonomy.domain.Refuelling.RefuellingDao;
 import br.univali.sisnet.autonomy.views.adapters.RefuellingAdapter;
 
 
-public class RefuellingListFragment extends Fragment implements View.OnClickListener {
+public class RefuellingListFragment extends Fragment {
 
     private RecyclerView rvRefuellings;
     private TextView tvZeroData;
 
+    private OnItemSelectedListener listener = null;
     private RefuellingAdapter adapter = null;
     private RefuellingDao dao;
 
@@ -31,19 +34,22 @@ public class RefuellingListFragment extends Fragment implements View.OnClickList
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
         Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_refuelling_list, container, false);
+    }
 
-        View view = inflater.inflate(R.layout.fragment_refuelling_list, container, false);
-        view.findViewById(R.id.btAddRefuelling).setOnClickListener(this);
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
-        dao = RefuellingDao.getInstance(getActivity().getApplicationContext());
+        super.onViewCreated(view, savedInstanceState);
 
+        view.findViewById(R.id.btAddRefuelling).setOnClickListener(this::onClickAdd);
         tvZeroData = (TextView) view.findViewById(R.id.tvZeroData);
         rvRefuellings = (RecyclerView) view.findViewById(R.id.rvRefuellings);
 
+        dao = RefuellingDao.getInstance(getActivity().getApplicationContext());
+
         setupRecyclerView();
         updateUi();
-
-        return view;
 
     }
 
@@ -60,8 +66,7 @@ public class RefuellingListFragment extends Fragment implements View.OnClickList
 
     }
 
-    @Override
-    public void onClick(View v) {
+    public void onClickAdd(View v) {
         Intent intent = new Intent(getActivity(), AddRefuellingActivity.class);
         getActivity().startActivity(intent);
     }
@@ -81,9 +86,25 @@ public class RefuellingListFragment extends Fragment implements View.OnClickList
     }
 
     @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof OnItemSelectedListener) {
+            listener = (OnItemSelectedListener) context;
+        } else {
+            throw new ClassCastException(context.toString()
+                + "must implement RefuellingListFragment.OnItemSelectedListener"
+            );
+        }
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
         updateUi();
+    }
+
+    public interface OnItemSelectedListener {
+        void onItemSelected(Refuelling refuelling);
     }
 
 }

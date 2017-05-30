@@ -3,17 +3,21 @@ package br.univali.sisnet.autonomy.activities;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
+import br.univali.sisnet.autonomy.domain.Refuelling.Refuelling;
 import br.univali.sisnet.autonomy.fragments.AutonomyFragment;
 import br.univali.sisnet.autonomy.R;
 import br.univali.sisnet.autonomy.fragments.RefuellingListFragment;
 import br.univali.sisnet.autonomy.views.adapters.ViewPagerAdapter;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements RefuellingListFragment.OnItemSelectedListener {
 
     private TabLayout tabs;
 
@@ -76,4 +80,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onItemSelected(Refuelling refuelling) {
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+
+
+        transaction.commit();
+    }
 }
