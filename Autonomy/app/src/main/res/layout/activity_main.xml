@@ -31,7 +31,8 @@
             app:tabGravity="fill"
             app:tabTextColor="@color/colorPrimaryDark"
             app:tabSelectedTextColor="@color/textColorWhite"
-            app:tabIndicatorColor="@color/textColorWhite">
+            app:tabIndicatorColor="@color/textColorWhite"
+            app:tabMaxWidth="0dp">
 
             <android.support.design.widget.TabItem
                 android:layout_width="wrap_content"

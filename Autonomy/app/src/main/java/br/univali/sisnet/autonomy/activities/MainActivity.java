@@ -15,6 +15,7 @@ import br.univali.sisnet.autonomy.domain.Refuelling.Refuelling;
 import br.univali.sisnet.autonomy.fragments.AutonomyFragment;
 import br.univali.sisnet.autonomy.R;
 import br.univali.sisnet.autonomy.fragments.RefuellingListFragment;
+import br.univali.sisnet.autonomy.fragments.RefuellingsFragment;
 import br.univali.sisnet.autonomy.views.adapters.ViewPagerAdapter;
 
 public class MainActivity extends AppCompatActivity implements RefuellingListFragment.OnItemSelectedListener {
@@ -49,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements RefuellingListFra
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new AutonomyFragment(), getResources().getString(R.string.autonomy));
-        adapter.addFragment(new RefuellingListFragment(), getResources().getString(R.string.refuellings));
+        adapter.addFragment(new RefuellingsFragment(), getResources().getString(R.string.refuellings));
         viewPager.setAdapter(adapter);
     }
 
