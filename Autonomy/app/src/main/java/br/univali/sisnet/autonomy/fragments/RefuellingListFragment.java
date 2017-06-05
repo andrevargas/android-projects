@@ -25,7 +25,7 @@ public class RefuellingListFragment extends Fragment {
     private RecyclerView rvRefuellings;
     private TextView tvZeroData;
 
-    private OnItemSelectedListener listener = null;
+    private OnItemSelectedListener listener;
     private RefuellingAdapter adapter = null;
     private RefuellingDao dao;
 
@@ -58,7 +58,7 @@ public class RefuellingListFragment extends Fragment {
         Context context = getActivity().getApplicationContext();
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
 
-        adapter = new RefuellingAdapter();
+        adapter = new RefuellingAdapter(listener);
         adapter.setList(dao.getAll());
 
         rvRefuellings.setLayoutManager(layoutManager);

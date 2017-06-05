@@ -11,11 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import br.univali.sisnet.autonomy.R;
-import br.univali.sisnet.autonomy.domain.Refuelling.Refuelling;
 
 
-public class RefuellingsFragment extends Fragment
-    implements RefuellingListFragment.OnItemSelectedListener {
+public class RefuellingsFragment extends Fragment {
 
     public RefuellingsFragment() {}
 
@@ -43,27 +41,4 @@ public class RefuellingsFragment extends Fragment
 
     }
 
-    @Override
-    public void onItemSelected(Refuelling refuelling) {
-
-        FragmentTransaction transaction = getActivity()
-            .getSupportFragmentManager()
-            .beginTransaction();
-
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("refuelling", refuelling);
-
-        RefuellingDetailFragment detailFragment = new RefuellingDetailFragment();
-        detailFragment.setArguments(bundle);
-
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            transaction.replace(R.id.flFragmentSecondary, detailFragment);
-        } else {
-            transaction.replace(R.id.flFragmentMain, detailFragment);
-            transaction.addToBackStack(null);
-        }
-
-        transaction.commit();
-
-    }
 }

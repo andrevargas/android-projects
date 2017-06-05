@@ -1,19 +1,19 @@
 package br.univali.sisnet.autonomy.activities;
 
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 
 import br.univali.sisnet.autonomy.domain.Refuelling.Refuelling;
 import br.univali.sisnet.autonomy.fragments.AutonomyFragment;
 import br.univali.sisnet.autonomy.R;
+import br.univali.sisnet.autonomy.fragments.RefuellingDetailFragment;
 import br.univali.sisnet.autonomy.fragments.RefuellingListFragment;
 import br.univali.sisnet.autonomy.fragments.RefuellingsFragment;
 import br.univali.sisnet.autonomy.views.adapters.ViewPagerAdapter;
@@ -86,8 +86,21 @@ public class MainActivity extends AppCompatActivity implements RefuellingListFra
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("refuelling", refuelling);
 
+        RefuellingDetailFragment detailFragment = new RefuellingDetailFragment();
+        detailFragment.setArguments(bundle);
+
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            transaction.replace(R.id.flFragmentSecondary, detailFragment);
+        } else {
+            transaction.replace(R.id.flFragmentMain, detailFragment);
+            transaction.addToBackStack(null);
+        }
 
         transaction.commit();
+
     }
+
 }
