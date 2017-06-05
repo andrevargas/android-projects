@@ -8,6 +8,8 @@ import br.univali.sisnet.autonomy.domain.GasStation.GasStation;
 
 public class Refuelling implements Serializable {
 
+    private static final long serialVersionUID = 2582233106362806851L;
+
     private long id;
     private double currentMileage;
     private double litersRefuelled;

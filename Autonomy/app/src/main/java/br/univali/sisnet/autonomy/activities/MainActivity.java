@@ -1,5 +1,6 @@
 package br.univali.sisnet.autonomy.activities;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -9,6 +10,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.ImageButton;
 
 import br.univali.sisnet.autonomy.domain.Refuelling.Refuelling;
 import br.univali.sisnet.autonomy.fragments.AutonomyFragment;
@@ -37,14 +40,22 @@ public class MainActivity extends AppCompatActivity implements RefuellingListFra
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
 
-        toolbar.setTitleTextColor(Color.WHITE);
-
-        setSupportActionBar(toolbar);
+        setupToolbar(toolbar);
         setupViewPager(viewPager);
 
         tabs.setupWithViewPager(viewPager);
         setupTabIcons();
 
+    }
+
+    private void setupToolbar(Toolbar toolbar) {
+        toolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(toolbar);
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            ImageButton btToolbarAddRefuelling = (ImageButton) findViewById(R.id.btToolbarAddRefuelling);
+            btToolbarAddRefuelling.setVisibility(View.VISIBLE);
+            btToolbarAddRefuelling.setOnClickListener(this::onClickAdd);
+        }
     }
 
     private void setupViewPager(ViewPager viewPager) {
@@ -79,6 +90,11 @@ public class MainActivity extends AppCompatActivity implements RefuellingListFra
 
         });
 
+    }
+
+    public void onClickAdd(View v) {
+        Intent intent = new Intent(this, AddRefuellingActivity.class);
+        startActivity(intent);
     }
 
     @Override

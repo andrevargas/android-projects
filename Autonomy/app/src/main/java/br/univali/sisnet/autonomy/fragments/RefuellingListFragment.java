@@ -3,6 +3,7 @@ package br.univali.sisnet.autonomy.fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import br.univali.sisnet.autonomy.R;
@@ -42,7 +44,13 @@ public class RefuellingListFragment extends Fragment {
 
         super.onViewCreated(view, savedInstanceState);
 
-        view.findViewById(R.id.btAddRefuelling).setOnClickListener(this::onClickAdd);
+        ImageButton btAddRefuelling = (ImageButton) view.findViewById(R.id.btAddRefuelling);
+
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            btAddRefuelling.setVisibility(View.VISIBLE);
+            btAddRefuelling.setOnClickListener(this::onClickAdd);
+        }
+
         tvZeroData = (TextView) view.findViewById(R.id.tvZeroData);
         rvRefuellings = (RecyclerView) view.findViewById(R.id.rvRefuellings);
 

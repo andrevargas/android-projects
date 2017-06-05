@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 import br.univali.sisnet.autonomy.R;
 import br.univali.sisnet.autonomy.domain.Refuelling.Refuelling;
 import br.univali.sisnet.autonomy.fragments.RefuellingListFragment;
+import br.univali.sisnet.autonomy.utils.Util;
 
 
 public class RefuellingViewHolder extends RecyclerView.ViewHolder {
@@ -49,7 +50,7 @@ public class RefuellingViewHolder extends RecyclerView.ViewHolder {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
         if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-            ivLogo.setImageResource(getDrawableIdByName(item.getGasStation().getLogoSrc()));
+            ivLogo.setImageResource(Util.getDrawableIdByName(context, item.getGasStation().getLogoSrc()));
         }
 
         tvRefuellingDate.setText(dateFormat.format(item.getRefuellingDate().getTime()));
@@ -68,11 +69,6 @@ public class RefuellingViewHolder extends RecyclerView.ViewHolder {
             )
         );
 
-    }
-
-    private int getDrawableIdByName(String drawableName) {
-        final Resources res = context.getResources();
-        return res.getIdentifier(drawableName, "drawable", context.getPackageName());
     }
 
 }

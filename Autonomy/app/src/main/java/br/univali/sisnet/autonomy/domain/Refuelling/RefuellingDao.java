@@ -70,7 +70,7 @@ public class RefuellingDao {
                 refuelling.setLitersRefuelled(cursor.getDouble(2));
 
                 Calendar refuellingDate = Calendar.getInstance();
-                refuellingDate.setTimeInMillis(cursor.getInt(3));
+                refuellingDate.setTimeInMillis(cursor.getLong(3));
                 refuelling.setRefuellingDate(refuellingDate);
 
                 refuelling.setGasStation(gasStationDao.get(cursor.getLong(4)));

@@ -1,7 +1,11 @@
 package br.univali.sisnet.autonomy.domain.GasStation;
 
 
-public class GasStation {
+import java.io.Serializable;
+
+public class GasStation implements Serializable {
+
+    private static final long serialVersionUID = 5164328947766190832L;
 
     private final long id;
     private final String name;
